@@ -142,9 +142,8 @@ textarea,
 	position: relative;
 	z-index: 100;
 	margin-bottom: 1.2rem;
-	background-color: #FAFAFA;
-	border-top: 1px solid $border-color;
-	border-bottom: 1px solid $border-color;
+	background-color: $primary-color;
+	box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
 }
 
 .header-info {
@@ -254,59 +253,102 @@ textarea,
 	align-items: center;
 	justify-content: flex-end;
 	> div {
-		margin-left: 2.4rem;
+		margin-left: 1.2rem;
 		> a {
 			position: relative;
-			height: 4.4rem;
+			height: 4.6rem;
 			display: flex;
 			align-items: center;
-			flex-direction: column;
-			justify-content: space-between;
+			flex-direction: row;
+			justify-content: center;
+			padding: 0 1.8rem;
 			color: $text-color;
-			font-weight: 500;
+			font-weight: 600;
+			border-radius: 3rem;
 			transition: $transition-base;
 			img {
 				transition: $transition-base;
+				width: 1.7rem;
+				margin-right: .8rem;
+			}
+			> span {
+				white-space: nowrap;
 			}
 			&:hover {
-				color: $primary-color;
 				img {
 					transform: translateY(-2px);
 				}
 			}
 		}
+		&.header-favori {
+			> a {
+				border: 1px solid $border-color;
+				&:hover {
+					border-color: $primary-color;
+					color: $primary-color;
+				}
+			}
+		}
+		&.user-menu {
+			> a {
+				background-color: $primary-color;
+				color: #fff;
+				img {
+					filter: brightness(0) invert(1);
+				}
+				&:hover {
+					background-color: $primary-hover-color;
+					color: #fff;
+				}
+			}
+		}
 		&.cart-menu {
 			> a {
+				background-color: $primary-hover-color;
+				color: #fff;
+				img {
+					filter: brightness(0) invert(1);
+				}
+				&:hover {
+					background-color: darken(#DF455E, 8%);
+					color: #fff;
+				}
 				.cart-amount {
 					position:absolute;
-					top: -14px;
-					right: 12px;
-					width: 18px;
-					height: 18px;
+					top: -8px;
+					right: 4px;
+					width: 20px;
+					height: 20px;
 					@include center;
-					background-color: $primary-color;
-					color: $primary-text-color;
+					background-color: #fff;
+					color: $primary-hover-color;
+					font-size: 1.1rem;
+					font-weight: 800;
 					border-radius: 50%;
+					box-shadow: 0 2px 5px rgba(0, 0, 0, 0.18);
 				}
 			}
 		}
 	}
 	@include max($sm) {
 		> div {
-			margin-left: 1.6rem;
+			margin-left: .8rem;
 			> a {
-				width: 4.4rem;
-				flex-direction: row;
+				width: 4.6rem;
+				padding: 0;
 				justify-content: center;
 				> span {
 					display: none;
+				}
+				img {
+					margin-right: 0;
 				}
 			}
 			&.cart-menu {
 				> a {
 					.cart-amount {
 						top: -6px;
-						right: 11px;
+						right: 0;
 					}
 				}
 			}
@@ -314,7 +356,7 @@ textarea,
 	}
 	@include max(376) {
 		> div {
-			margin-left: 1rem;
+			margin-left: .6rem;
 		}
 	}
 }
@@ -346,31 +388,39 @@ textarea,
 					display: flex;
 					align-items: center;
 					justify-content: center;
-					height: 4rem;
-					color: $text-color;
+					height: 4.6rem;
+					color: #fff;
 					font-size: 1.4rem;
-					font-weight: 500;
+					font-weight: 600;
+					letter-spacing: .02em;
 					text-transform: uppercase;
+					transition: color .2s ease-in-out;
 					&:after {
 						content: '';
 						position: absolute;
-						left: 0;
+						left: 50%;
 						bottom: 0;
 						width: 0;
-						height: 2px;
-						background-color: $primary-color;
+						height: 3px;
+						background-color: $primary-hover-color;
+						border-radius: 3px 3px 0 0;
 						transition: $transition-base;
+						transform: translateX(-50%);
+					}
+					&:hover {
+						color: rgba(255, 255, 255, 0.75);
 					}
 				}
 				&.has-sub-category {
 					> a {
-						
+
 					}
 				}
 				&.active {
 					> a {
+						color: #fff;
 						&:after {
-							width: 100%;
+							width: 60%;
 						}
 					}
 					> .category-level-2 {
@@ -1198,6 +1248,62 @@ textarea,
 	cursor: pointer;
 	@include max($md) {
 		display: none!important;
+	}
+}
+
+.floating-whatsapp {
+	position: fixed;
+	top: 55%;
+	right: 0;
+	transform: translateY(-50%);
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 1rem;
+	padding: 1.8rem 1.1rem;
+	background-color: #25D366;
+	color: #fff;
+	border-radius: $radius-base 0 0 $radius-base;
+	box-shadow: -4px 0 16px rgba(0, 0, 0, 0.18);
+	z-index: 98;
+	text-decoration: none;
+	transition: padding .2s ease-in-out, background-color .2s ease-in-out;
+	animation: floatingWhatsappPulse 2.6s ease-in-out infinite;
+	i {
+		font-size: 2.2rem;
+		color: #fff;
+	}
+	span {
+		writing-mode: vertical-rl;
+		text-orientation: mixed;
+		font-weight: 700;
+		font-size: 1.3rem;
+		letter-spacing: .03em;
+		white-space: nowrap;
+	}
+	&:hover {
+		color: #fff;
+		background-color: darken(#25D366, 7%);
+		padding-right: 1.6rem;
+	}
+	@include max($sm) {
+		padding: 1.2rem .9rem;
+		span {
+			display: none;
+		}
+		i {
+			font-size: 2rem;
+		}
+	}
+}
+
+@keyframes floatingWhatsappPulse {
+	0%, 100% {
+		box-shadow: -4px 0 16px rgba(0, 0, 0, 0.18), 0 0 0 0 rgba(37, 211, 102, 0.45);
+	}
+	50% {
+		box-shadow: -4px 0 16px rgba(0, 0, 0, 0.18), 0 0 0 10px rgba(37, 211, 102, 0);
 	}
 }
 

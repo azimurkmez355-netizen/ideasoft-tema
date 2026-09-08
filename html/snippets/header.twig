@@ -171,3 +171,9 @@
 		</div>
 	</div>
 {% endif %}
+{% if theme.settings.whatsapp %}
+	<a href="https://wa.me/9{{ theme.settings.whatsapp | replace({' ': ''}) }}" target="_blank" class="floating-whatsapp" aria-label="WhatsApp Destek Hattı">
+		<i class="fab fa-whatsapp"></i>
+		<span>WhatsApp Destek Hattı</span>
+	</a>
+{% endif %}
