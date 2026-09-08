@@ -142,7 +142,7 @@ textarea,
 	position: relative;
 	z-index: 100;
 	margin-bottom: 1.2rem;
-	background-color: $primary-color;
+	background: linear-gradient(180deg, lighten($primary-color, 4%) 0%, $primary-color 100%);
 	box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
 }
 
@@ -382,19 +382,26 @@ textarea,
 			align-items: center;
 			justify-content: center;
 			> li {
-				padding: 0 1.5rem;
+				padding: 0 .3rem;
 				> a {
 					position: relative;
 					display: flex;
 					align-items: center;
 					justify-content: center;
 					height: 4.6rem;
+					padding: 0 1.4rem;
 					color: #fff;
 					font-size: 1.4rem;
 					font-weight: 600;
 					letter-spacing: .02em;
 					text-transform: uppercase;
-					transition: color .2s ease-in-out;
+					border-radius: $radius-base $radius-base 0 0;
+					transition: color .2s ease-in-out, background-color .2s ease-in-out;
+					i {
+						margin-left: .6rem;
+						font-size: 1rem;
+						transition: $transition-base;
+					}
 					&:after {
 						content: '';
 						position: absolute;
@@ -408,12 +415,17 @@ textarea,
 						transform: translateX(-50%);
 					}
 					&:hover {
-						color: rgba(255, 255, 255, 0.75);
+						color: #fff;
+						background-color: rgba(255, 255, 255, 0.12);
 					}
 				}
 				&.has-sub-category {
 					> a {
-
+						&:hover {
+							i {
+								transform: translateY(2px);
+							}
+						}
 					}
 				}
 				&.active {
@@ -539,41 +551,42 @@ textarea,
 			bottom: 1.5rem;
 			> li {
 				position: relative;
-				margin: 0 1.2rem;
+				margin: 0 .6rem;
 				> img {
-					width: 78px;
-					height: 45px;
-					border: none;
+					width: 68px;
+					height: 40px;
+					border: 2px solid rgba(255, 255, 255, 0.6);
+					border-radius: $radius-base;
 					padding: 0;
 					cursor: pointer;
 					display: block;
 					object-fit: cover;
+					opacity: .7;
+					transition: $transition-base;
+					box-shadow: 0 4px 10px rgba(0, 0, 0, 0.18);
+					&:hover {
+						opacity: 1;
+						transform: translateY(-3px);
+					}
 				}
 				&.slick-active {
-					&:after {
-						content: '';
-						position: absolute;
-						left: 0;
-						bottom: -2rem;
-						width: 100%;
-						height: 3px;
-						background-color: $primary-color;
+					> img {
+						opacity: 1;
+						border-color: $primary-hover-color;
 					}
 				}
 			}
 			@include max($sm) {
-                    bottom:5px;
-                    li {
-                        img {
-                            width: 10px;
-                            height: 10px;
-                        }
-                        &.slick-active {
-                            &:after {
-                                bottom:-.5rem;
-                            }
-                        }
-                    }
+				bottom: 8px;
+				li {
+					margin: 0 .3rem;
+					img {
+						width: 10px;
+						height: 10px;
+						border-radius: 50%;
+						border-width: 1px;
+					}
+				}
 			}
 		}
 	}
@@ -581,8 +594,15 @@ textarea,
 
 .entry-banner-title {
 	margin-bottom: 2.4rem;
+	padding: 1.6rem;
+	background-color: $light-gray-color;
+	border-radius: $radius-base;
 	.banner {
-		margin-bottom: 2.4rem;
+		margin-bottom: 1.6rem;
+		border-radius: $radius-base;
+		overflow: hidden;
+		box-shadow: 0 6px 18px rgba(28, 28, 28, 0.08);
+		transition: $transition-base;
 		.banner-title-text {
 			display: flex;
 			align-items: center;
@@ -591,8 +611,9 @@ textarea,
 			font-size: 1.4rem;
 			font-weight: 500;
 			padding: 0 1.5rem;
-			border-radius: 0 0 10px 10px;
-			border: 1px solid $border-color;
+			border-radius: 0;
+			border: none;
+			border-top: 1px solid $border-color;
 			transition: $transition-base;
 			@include max($sm) {
 				font-size: 1.2rem;
@@ -600,13 +621,20 @@ textarea,
 			}
 		}
 		.banner-title-img {
+			overflow: hidden;
 			img {
 				width: 100%;
 				height: 100%;
 				object-fit: cover;
+				transition: transform .4s ease-in-out;
 			}
 		}
 		&:hover {
+			transform: translateY(-4px);
+			box-shadow: 0 14px 28px rgba(28, 28, 28, 0.14);
+			.banner-title-img img {
+				transform: scale(1.06);
+			}
 			.banner-title-text {
 				color: #fff;
 				background-color: $text-color;

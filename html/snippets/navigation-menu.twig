@@ -6,6 +6,7 @@
 					<li {% if firstLevelCategory.subCategories | length > 0 %}class="has-sub-category"{% endif %} data-selector="first-level-navigation">
 						<a href="{{ firstLevelCategory.url }}" title="{{ firstLevelCategory.name }}">
 							<span>{{ firstLevelCategory.name }}</span>
+							{% if firstLevelCategory.subCategories | length > 0 %}<i class="fas fa-chevron-down"></i>{% endif %}
 						</a>
 						{% if firstLevelCategory.subCategories | length > 0 %}
 							<div class="sub-category category-level-2">
@@ -63,6 +64,7 @@
                         <li {% if firstLevelMenuItem.subMenus | length > 0 %}class="has-sub-category"{% endif %} data-selector="first-level-navigation">
                             <a href="{{ firstLevelMenuItem.link }}" target="{{ firstLevelMenuItem.target }}" rel="noopener">
                                 <span>{{ firstLevelMenuItem.label }}</span>
+                                {% if firstLevelMenuItem.subMenus | length > 0 %}<i class="fas fa-chevron-down"></i>{% endif %}
                             </a>
                             {% if firstLevelMenuItem.subMenus | length > 0 %}
                                 <div class="sub-category category-level-2">
