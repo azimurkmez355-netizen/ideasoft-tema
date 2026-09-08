@@ -1,0 +1,50 @@
+<div class="product-detail-tab">
+	<div class="product-detail-tab-header">
+		<div class="active" data-tab-index="1"><a href="javascript:void(0);">Ürün Bilgileri</a></div>
+        {% if theme.settings.product_detail_page_tabs.display_special_information_area and product.specialInfo %}
+			<div class="" data-tab-index="5"><a href="javascript:void(0);">{{ product.specialInfo.title }}</a></div>
+		{% endif %}
+		{% if theme.settings.product_detail_page_tabs.display_payment_options %}
+			<div class="" data-tab-index="2" data-type="payment-option"><a href="javascript:void(0);">Taksit Seçenekleri</a></div>
+		{% endif %}
+		{% if theme.settings.product_detail_page_tabs.display_product_comments %}
+			<div class="" data-tab-index="3"><a href="javascript:void(0);">Ürün Yorumları</a></div>
+		{% endif %}
+		{% if theme.settings.product_detail_page_tabs.display_product_feeds %}
+			<div class="" data-tab-index="4"><a href="javascript:void(0);">Önerileriniz</a></div>
+		{% endif %}
+        
+	</div>
+	<div class="product-detail-tab-content">
+		<div class="active" data-tab-content="1">
+			<div class="product-detail">{{ product.details | raw }}</div>
+			{% if product.specs | length > 0 and theme.settings.display_product_attributes %}
+				<div class="product-specs-table">
+					<table class="table">
+						<tbody>
+							{% for spec in product.specs %}
+								<tr>
+									<td>{{ spec.name }}</td>
+									<td>:</td>
+									<td>{{ spec.values | join(', ') }}</td>
+								</tr>
+							{% endfor %}
+						</tbody>
+					</table>
+				</div>
+			{% endif %}
+		</div>
+		{% if theme.settings.product_detail_page_tabs.display_payment_options %}
+			<div class="" data-tab-content="2"></div>
+		{% endif %}
+		{% if theme.settings.product_detail_page_tabs.display_product_comments %}
+			<div class="" data-tab-content="3">{% include 'html/snippets/product/comment.twig' %}</div>
+		{% endif %}
+		{% if theme.settings.product_detail_page_tabs.display_product_feeds %}
+			<div class="" data-tab-content="4">{% include 'html/snippets/product/form/product-feed.twig' %}</div>
+		{% endif %}
+        {% if theme.settings.product_detail_page_tabs.display_special_information_area and product.specialInfo %}
+			<div class="" data-tab-content="5">{{ product.specialInfo.content | raw }}</div>
+		{% endif %}
+	</div>
+</div>

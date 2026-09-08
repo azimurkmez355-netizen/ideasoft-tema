@@ -1,0 +1,721 @@
+{
+    "theme_version": 2,
+    "group": {
+        "type": "tab",
+        "values": [
+            {
+                "name": "Genel Ayarlar",
+                "settings": {
+                    "logo": {
+                        "type": "image",
+                        "default_value": "images\/logo.png",
+                        "filename": "logo",
+                        "label": "Logo",
+                        "info": ""
+                    },
+                    "nopic_image": {
+                        "type": "image",
+                        "default_value": "images\/nopic_image.png",
+                        "filename": "nopic_image",
+                        "label": "Varsayılan Katalog Görseli",
+                        "info": "Resmi yüklenmemiş ürünler, kategoriler ve markalar için kullanabileceğiniz varsayılan görsel."
+                    },
+                    "optioned_product_view_type": {
+                        "type": "select",
+                        "default_value": "dropdown",
+                        "options": [
+                            {
+                                "label": "Aşağı açılır liste",
+                                "value": "dropdown"
+                            },
+                            {
+                                "label": "Seçenek listesi (tekil)",
+                                "value": "radiobox"
+                            },
+                            {
+                                "label": "Seçenek listesi (çoğul)",
+                                "value": "radiobox_multiple"
+                            }
+                        ],
+                        "label": "Varyantlı Ürün Gösterim Tipi",
+                        "info": ""
+                    },
+                    "optioned_product_price_view_type": {
+                        "type": "select",
+                        "default_value": "name",
+                        "options": [
+                            {
+                                "label": "Sadece seçenek adı",
+                                "value": "name"
+                            },
+                            {
+                                "label": "KDV dahil",
+                                "value": "name_with_tax_string"
+                            },
+                            {
+                                "label": "Fiyat + KDV",
+                                "value": "name_without_tax_string"
+                            }
+                        ],
+                        "label": "Varyantlı Ürün Fiyat Gösterim Tipi",
+                        "info": "Fiyat gösterim ayarı sadece Seçenek Listesi Çoğul opsiyonu ile beraber kullanılabilir."
+                    },
+                    "brand_view_type": {
+                        "type": "select",
+                        "default_value": "name",
+                        "options": [
+                            {
+                                "label": "İsim",
+                                "value": "name"
+                            },
+                            {
+                                "label": "Marka Logosu",
+                                "value": "logo"
+                            }
+                        ],
+                        "label": "Marka Gösterim Tipi",
+                        "info": "Seçilen kategorilere bağlı olan markalar, buradaki seçiminize göre gösterilecektir."
+                    },
+                    "showcase_repeat_columns": {
+                        "type": "select",
+                        "default_value": 3,
+                        "options": [
+                            {
+                                "label": "2",
+                                "value": 2
+                            },
+                            {
+                                "label": "3",
+                                "value": 3
+                            },
+                            {
+                                "label": "4",
+                                "value": 4
+                            },
+                            {
+                                "label": "5",
+                                "value": 5
+                            }
+                        ],
+                        "label": "Vitrinde 1 Satırdaki Ürün Adedi"
+                    },
+                    "display_category_detail": {
+                        "type": "checkbox",
+                        "default_value": 1,
+                        "label": "Kategorilerin Detayda Gösterimi"
+                    },
+                    "display_brand_detail": {
+                        "type": "checkbox",
+                        "default_value": 1,
+                        "label": "Markaların Detayda Gösterimi"
+                    },
+                    "display_collection_detail": {
+                        "type": "checkbox",
+                        "default_value": 1,
+                        "label": "Koleksiyonların Detayda Gösterimi"
+                    },
+                    "display_bread_crumb": {
+                        "type": "checkbox",
+                        "default_value": 1,
+                        "label": "Breadcrumb Kullanımı",
+                        "info": "Kategori ve Marka sayfalarında breadcrumb kullanımını aktif eder. Breadcrumb, web sitelerindeki kullanıcıların konumlarını takip etmelerini sağlayan bir navigasyon öğesidir ve gezdikleri sayfaların hiyerarşik yolunu gösterir."
+                    },
+                    "display_category_logo": {
+                        "type": "checkbox",
+                        "default_value": 1,
+                        "label": "Kategori Logolarının Gösterimi",
+                        "info": "Açık olduğunda kategori listelenen yerlerde, kategori logosu gösterilir."
+                    },
+                    "display_category_subcategories": {
+                        "type": "checkbox",
+                        "default_value": 1,
+                        "label": "Kategoriye Bağlı Alt Kategorilerin Gösterimi",
+                        "info": "Aktif edildiğinde kategoriye bağlı alt kategoriler, o kategorinin ürünleri listelenirken üst kısımda gösterilir."
+                    },
+                    "display_category_brands": {
+                        "type": "checkbox",
+                        "default_value": 1,
+                        "label": "Kategorideki Markaların Gösterimi",
+                        "info": "Bir kategoride ürünleri yer alan markalar, o kategorinin ürünleri listelenirken üst kısımda gösterilir."
+                    },
+                    "display_sorting_options": {
+                        "type": "checkbox_group",
+                        "default_value": 1,
+                        "items": [
+                            {
+                                "label": "Fiyat Sıralama",
+                                "value": "display_price_sorting"
+                            },
+                            {
+                                "label": "Çok Değerlendirilenler",
+                                "value": "display_comment_count_sorting"
+                            },
+                            {
+                                "label": "Yüksek Puanlılar",
+                                "value": "display_rank_sorting"
+                            },
+                            {
+                                "label": "Yeni Eklenenler",
+                                "value": "display_product_new_sorting"
+                            },
+                            {
+                                "label": "İndirim Oranı",
+                                "value": "display_product_discount_sorting"
+                            },
+                            {
+                                "label": "Alfabetik Sıralama",
+                                "value": "display_alphabetic_sorting"
+                            }
+                        ],
+                        "label": "Sıralama Seçeneklerinin Kullanımı",
+                        "info": "Kategori ve marka ürünleri ile arama sonuçları sayfalarında ürünlerinizin belirttiğiniz şartlara göre sıralanması opsiyonunu açar. "
+                    },
+                    "display_order_tax_information": {
+                        "type": "checkbox",
+                        "default_value": 1,
+                        "label": "Sipariş aşamalarında KDV Gösterimi",
+                        "info": ""
+                    },
+                    "display_category_or_brand_filter": {
+                        "type": "checkbox",
+                        "default_value": 0,
+                        "label": "Sayfalar için Kategori ve Marka Bazlı Filtreleme",
+                        "info": "Örneğin, indirimli ürünler sayfasında kategori ve marka filtrelemesi yapmanıza imkan verir."
+                    },
+                    "display_sku": {
+                        "type": "checkbox",
+                        "default_value": 1,
+                        "label": "Stok Kodlarının Gösterimi",
+                        "info": "Sistemde, vitrinlerde ve ürün detay sayfalarında stok kodlarının gösterilmesini\/gizlenmesini sağlar."
+                    },
+                    "display_without_tax_price": {
+                        "type": "checkbox",
+                        "default_value": 1,
+                        "label": "KDV Hariç Fiyat Gösterimi",
+                        "info": ""
+                    },
+                    "display_retailer_comparison_price": {
+                        "type": "checkbox",
+                        "default_value": 0,
+                        "label": "Bayilere Ürünlerin Ana Fiyatının da Gösterilmesi",
+                        "info": ""
+                    },
+                    "display_product_lowest_price": {
+                        "type": "checkbox",
+                        "default_value": 0,
+                        "label": "En Düşük Taksit Miktarı Gösterimi",
+                        "info": "Ürün detaylı sayfasında sistemde aktif pos bilgisine göre kredi kartı oranları ve taksit sayısına göre en düşük taksit miktarının gösterilmesini sağlar.Eğer 0 TL ise göstermez. Örn: \"23 TL'den başlayan takistlerle!!\""
+                    },
+                    "display_compare_button": {
+                        "type": "checkbox",
+                        "default_value": 1,
+                        "label": "Ürün Karşılaştırma Butonunun Kullanımı",
+                        "info": "Sitenizdeki ürünleri birbiri arasında kıyaslamanızı , karşılaştırmanızı sağlar."
+                    },
+                    "display_product_attributes": {
+                        "type": "checkbox",
+                        "default_value": 1,
+                        "label": "Ürün Detayda Ürün Özelliklerinin Gösterimi",
+                        "info": ""
+                    },
+                    "use_facebook_login": {
+                        "type": "checkbox",
+                        "default_value": 1,
+                        "label": "Facebook Login Sistemi",
+                        "info": "Facebook üyeliği üzerinden sisteme üye olma özelliğidir."
+                    },
+                    "use_google_login": {
+                        "type": "checkbox",
+                        "default_value": 1,
+                        "label": "Google Hesabı ile Login Sistemi",
+                        "info": "Google hesabı üzerinden sisteme üye olma özelliğidir."
+                    },
+                    "use_lazy_load": {
+                        "type": "checkbox",
+                        "default_value": 1,
+                        "label": "Jquery Lazy Load Eklentisi Kullanımı",
+                        "info": "Siteniz üzerinde bulunan resim dosyalarını ziyaretçilerinize ilk yükleme anında göstermek yerine gezinti sırasında yüklenmesini sağlayarak sitenizin ilk açılış performansını artıran bir özelliktir."
+                    },
+                    "use_search_auto_complete": {
+                        "type": "checkbox",
+                        "default_value": 0,
+                        "label": "Otomatik Tamamlama Sistemi",
+                        "info": "Aktif edildiğinde, sağ ve üst blok arama kısımlarında Otomatik Tamamlama Özelliği açılır."
+                    },
+                    "use_social_links": {
+                        "type": "checkbox",
+                        "default_value": 1,
+                        "label": "Paylaşım Linkleri Kullanımı",
+                        "info": ""
+                    },
+                    "use_rich_snippets": {
+                        "type": "checkbox",
+                        "default_value": 1,
+                        "label": "Rich Snippets Kullanımı",
+                        "info": "Google aramalarında ürününüze ait özel bilgilerin görünmesini sağlar."
+                    },
+                    "product_detail_page_tabs": {
+                        "type": "checkbox_group",
+                        "default_value": 1,
+                        "items": [
+                            {
+                                "label": "Ürün Yorumları",
+                                "value": "display_product_comments"
+                            },
+                            {
+                                "label": "Taksit Seçenekleri",
+                                "value": "display_payment_options"
+                            },
+                            {
+                                "label": "Önerileriniz",
+                                "value": "display_product_feeds"
+                            },
+                            {
+                                "label": "Özel Bilgi Alanları",
+                                "value": "display_special_information_area"
+                            },
+                            {
+                                "label": "Soru & Cevap",
+                                "value": "display_product_questions"
+                            }
+                        ],
+                        "label": "Ürün İnceleme Sayfası Sekmeleri",
+                        "info": "Ürün inceleme sayfasında görüntülenen sekmeleri açıp kapatabilirsiniz"
+                    }
+                }
+            },
+            {
+                "name": "Header",
+                "settings": {
+                    "header_slogan": {
+                        "type": "text",
+                        "default_value": "",
+                        "label": "Copyright Yazısı"
+                    }
+                }
+            },
+            {
+                "name": "Slider",
+                "group": {
+                    "type": "tab",
+                    "values": [
+                        {
+                            "name": "#1",
+                            "settings": {
+                                "entry_slider_image_1": {
+                                    "type": "image",
+                                    "default_value": "",
+                                    "filename": "entry_slider_image_1",
+                                    "label": "Slider Resmi #1"
+                                },
+                                "entry_slider_big_image_1": {
+                                    "type": "image",
+                                    "default_value": "",
+                                    "filename": "entry_slider_big_image_1",
+                                    "label": "Slider Arka Plan Büyük Resmi #1"
+                                },
+                                "entry_slider_background_color_1": {
+                                    "type": "colorpicker",
+                                    "default_value": "",
+                                    "label": "Slider Arka Plan Rengi #1"
+                                },
+                                "entry_slider_link_1": {
+                                    "type": "text",
+                                    "default_value": "",
+                                    "label": "Slider Link #1"
+                                }
+                            }
+                        },
+                        {
+                            "name": "#2",
+                            "settings": {
+                                "entry_slider_image_2": {
+                                    "type": "image",
+                                    "default_value": "",
+                                    "filename": "entry_slider_image_2",
+                                    "label": "Slider Resmi #2"
+                                },
+                                "entry_slider_big_image_2": {
+                                    "type": "image",
+                                    "default_value": "",
+                                    "filename": "entry_slider_big_image_2",
+                                    "label": "Slider Arka Plan Büyük Resmi #2"
+                                },
+                                "entry_slider_background_color_2": {
+                                    "type": "colorpicker",
+                                    "default_value": "",
+                                    "label": "Slider Arka Plan Rengi #2"
+                                },
+                                "entry_slider_link_2": {
+                                    "type": "text",
+                                    "default_value": "",
+                                    "label": "Slider Link #2"
+                                }
+                            }
+                        },
+                        {
+                            "name": "#3",
+                            "settings": {
+                                "entry_slider_image_3": {
+                                    "type": "image",
+                                    "default_value": "",
+                                    "filename": "entry_slider_image_3",
+                                    "label": "Slider Resmi #3"
+                                },
+                                "entry_slider_big_image_3": {
+                                    "type": "image",
+                                    "default_value": "",
+                                    "filename": "entry_slider_big_image_3",
+                                    "label": "Slider Arka Plan Büyük Resmi #3"
+                                },
+                                "entry_slider_background_color_3": {
+                                    "type": "colorpicker",
+                                    "default_value": "",
+                                    "label": "Slider Arka Plan Rengi #3"
+                                },
+                                "entry_slider_link_3": {
+                                    "type": "text",
+                                    "default_value": "",
+                                    "label": "Slider Link #3"
+                                }
+                            }
+                        },
+                        {
+                            "name": "#4",
+                            "settings": {
+                                "entry_slider_image_4": {
+                                    "type": "image",
+                                    "default_value": "",
+                                    "filename": "entry_slider_image_4",
+                                    "label": "Slider Resmi #4"
+                                },
+                                "entry_slider_big_image_4": {
+                                    "type": "image",
+                                    "default_value": "",
+                                    "filename": "entry_slider_big_image_4",
+                                    "label": "Slider Arka Plan Büyük Resmi #4"
+                                },
+                                "entry_slider_background_color_4": {
+                                    "type": "colorpicker",
+                                    "default_value": "",
+                                    "label": "Slider Arka Plan Rengi #4"
+                                },
+                                "entry_slider_link_4": {
+                                    "type": "text",
+                                    "default_value": "",
+                                    "label": "Slider Link #4"
+                                }
+                            }
+                        },
+                        {
+                            "name": "#5",
+                            "settings": {
+                                "entry_slider_image_5": {
+                                    "type": "image",
+                                    "default_value": "",
+                                    "filename": "entry_slider_image_5",
+                                    "label": "Slider Resmi #5"
+                                },
+                                "entry_slider_big_image_5": {
+                                    "type": "image",
+                                    "default_value": "",
+                                    "filename": "entry_slider_big_image_5",
+                                    "label": "Slider Arka Plan Büyük Resmi #5"
+                                },
+                                "entry_slider_background_color_5": {
+                                    "type": "colorpicker",
+                                    "default_value": "",
+                                    "label": "Slider Arka Plan Rengi #5"
+                                },
+                                "entry_slider_link_5": {
+                                    "type": "text",
+                                    "default_value": "",
+                                    "label": "Slider Link #5"
+                                }
+                            }
+                        },
+                        {
+                            "name": "#6",
+                            "settings": {
+                                "entry_slider_image_6": {
+                                    "type": "image",
+                                    "default_value": "",
+                                    "filename": "entry_slider_image_6",
+                                    "label": "Slider Resmi #6"
+                                },
+                                "entry_slider_big_image_6": {
+                                    "type": "image",
+                                    "default_value": "",
+                                    "filename": "entry_slider_big_image_6",
+                                    "label": "Slider Arka Plan Büyük Resmi #6"
+                                },
+                                "entry_slider_background_color_6": {
+                                    "type": "colorpicker",
+                                    "default_value": "",
+                                    "label": "Slider Arka Plan Rengi #6"
+                                },
+                                "entry_slider_link_6": {
+                                    "type": "text",
+                                    "default_value": "",
+                                    "label": "Slider Link #6"
+                                }
+                            }
+                        },
+                        {
+                            "name": "#7",
+                            "settings": {
+                                "entry_slider_image_7": {
+                                    "type": "image",
+                                    "default_value": "",
+                                    "filename": "entry_slider_image_7",
+                                    "label": "Slider Resmi #7"
+                                },
+                                "entry_slider_big_image_7": {
+                                    "type": "image",
+                                    "default_value": "",
+                                    "filename": "entry_slider_big_image_7",
+                                    "label": "Slider Arka Plan Büyük Resmi #7"
+                                },
+                                "entry_slider_background_color_7": {
+                                    "type": "colorpicker",
+                                    "default_value": "",
+                                    "label": "Slider Arka Plan Rengi #7"
+                                },
+                                "entry_slider_link_7": {
+                                    "type": "text",
+                                    "default_value": "",
+                                    "label": "Slider Link #7"
+                                }
+                            }
+                        },
+                        {
+                            "name": "#8",
+                            "settings": {
+                                "entry_slider_image_8": {
+                                    "type": "image",
+                                    "default_value": "",
+                                    "filename": "entry_slider_image_8",
+                                    "label": "Slider Resmi #8"
+                                },
+                                "entry_slider_big_image_8": {
+                                    "type": "image",
+                                    "default_value": "",
+                                    "filename": "entry_slider_big_image_8",
+                                    "label": "Slider Arka Plan Büyük Resmi #8"
+                                },
+                                "entry_slider_background_color_8": {
+                                    "type": "colorpicker",
+                                    "default_value": "",
+                                    "label": "Slider Arka Plan Rengi #8"
+                                },
+                                "entry_slider_link_8": {
+                                    "type": "text",
+                                    "default_value": "",
+                                    "label": "Slider Link #8"
+                                }
+                            }
+                        },
+                        {
+                            "name": "#9",
+                            "settings": {
+                                "entry_slider_image_9": {
+                                    "type": "image",
+                                    "default_value": "",
+                                    "filename": "entry_slider_image_9",
+                                    "label": "Slider Resmi #9"
+                                },
+                                "entry_slider_big_image_9": {
+                                    "type": "image",
+                                    "default_value": "",
+                                    "filename": "entry_slider_big_image_9",
+                                    "label": "Slider Arka Plan Büyük Resmi #9"
+                                },
+                                "entry_slider_background_color_9": {
+                                    "type": "colorpicker",
+                                    "default_value": "",
+                                    "label": "Slider Arka Plan Rengi #9"
+                                },
+                                "entry_slider_link_9": {
+                                    "type": "text",
+                                    "default_value": "",
+                                    "label": "Slider Link #9"
+                                }
+                            }
+                        },
+                        {
+                            "name": "#10",
+                            "settings": {
+                                "entry_slider_image_10": {
+                                    "type": "image",
+                                    "default_value": "",
+                                    "filename": "entry_slider_image_10",
+                                    "label": "Slider Resmi #10"
+                                },
+                                "entry_slider_big_image_10": {
+                                    "type": "image",
+                                    "default_value": "",
+                                    "filename": "entry_slider_big_image_10",
+                                    "label": "Slider Arka Plan Büyük Resmi #10"
+                                },
+                                "entry_slider_background_color_10": {
+                                    "type": "colorpicker",
+                                    "default_value": "",
+                                    "label": "Slider Arka Plan Rengi #10"
+                                },
+                                "entry_slider_link_10": {
+                                    "type": "text",
+                                    "default_value": "",
+                                    "label": "Slider Link #10"
+                                }
+                            }
+                        }
+                    ]
+                }
+            },
+            {
+                "name": "Footer",
+                "settings": {
+                    "shopping_banner_title_1": {
+                        "type": "text",
+                        "default_value": "",
+                        "label": "Alışveriş Banner Başlığı #1"
+                    },
+                    "shopping_banner_sub_title_1": {
+                        "type": "text",
+                        "default_value": "",
+                        "label": "Alışveriş Banner Alt Başlığı #1"
+                    },
+                    "shopping_banner_link_1": {
+                        "type": "text",
+                        "default_value": "",
+                        "label": "Alışveriş Banner Linki #1"
+                    },
+                    "shopping_banner_image_1": {
+                        "type": "image",
+                        "default_value": "",
+                        "filename": "shopping_banner_image_1",
+                        "label": "Alışveriş Banner Resmi #1"
+                    },
+                    "shopping_banner_title_2": {
+                        "type": "text",
+                        "default_value": "",
+                        "label": "Alışveriş Banner Başlığı #2"
+                    },
+                    "shopping_banner_sub_title_2": {
+                        "type": "text",
+                        "default_value": "",
+                        "label": "Alışveriş Banner Alt Başlığı #2"
+                    },
+                    "shopping_banner_link_2": {
+                        "type": "text",
+                        "default_value": "",
+                        "label": "Alışveriş Banner Linki #2"
+                    },
+                    "shopping_banner_image_2": {
+                        "type": "image",
+                        "default_value": "",
+                        "filename": "shopping_banner_image_2",
+                        "label": "Alışveriş Banner Resmi #2"
+                    },
+                    "shopping_banner_title_3": {
+                        "type": "text",
+                        "default_value": "",
+                        "label": "Alışveriş Banner Başlığı #3"
+                    },
+                    "shopping_banner_sub_title_3": {
+                        "type": "text",
+                        "default_value": "",
+                        "label": "Alışveriş Banner Alt Başlığı #3"
+                    },
+                    "shopping_banner_link_3": {
+                        "type": "text",
+                        "default_value": "",
+                        "label": "Alışveriş Banner Linki #3"
+                    },
+                    "shopping_banner_image_3": {
+                        "type": "image",
+                        "default_value": "",
+                        "filename": "shopping_banner_image_3",
+                        "label": "Alışveriş Banner Resmi #3"
+                    },
+                    "shopping_banner_title_4": {
+                        "type": "text",
+                        "default_value": "",
+                        "label": "Alışveriş Banner Başlığı #4"
+                    },
+                    "shopping_banner_sub_title_4": {
+                        "type": "text",
+                        "default_value": "",
+                        "label": "Alışveriş Banner Alt Başlığı #4"
+                    },
+                    "shopping_banner_link_4": {
+                        "type": "text",
+                        "default_value": "",
+                        "label": "Alışveriş Banner Linki #4"
+                    },
+                    "shopping_banner_image_4": {
+                        "type": "image",
+                        "default_value": "",
+                        "filename": "shopping_banner_image_4",
+                        "label": "Alışveriş Banner Resmi #4"
+                    },
+                    "copyright": {
+                        "type": "text",
+                        "default_value": "",
+                        "label": "Copyright Yazısı"
+                    },
+                    "footer_links": {
+                        "type": "codeeditor",
+                        "default_value": "",
+                        "label": "Footer Menüleri"
+                    },
+                    "footer_menu_type": {
+                        "type": "select",
+                        "default_value": "true",
+                        "options": [
+                            {
+                                "label": "Akordiyon",
+                                "value": "accordion"
+                            },
+                            {
+                                "label": "Liste",
+                                "value": "list"
+                            }
+                        ],
+                        "label": "Footer menülerinin mobil görünümü"
+                    }
+                }
+            },
+            {
+                "name": "Sosyal & İletişim",
+                "settings": {
+                    "phone": {
+                        "type": "text",
+                        "default_value": "",
+                        "label": "Telefon Numarası"
+                    },
+                    "whatsapp": {
+                        "type": "text",
+                        "default_value": "",
+                        "label": "Whatsapp Numarası"
+                    },
+                    "facebook": {
+                        "type": "text",
+                        "default_value": "",
+                        "label": "Facebook Adresi"
+                    },
+                    "instagram": {
+                        "type": "text",
+                        "default_value": "",
+                        "label": "Instagram Adresi"
+                    },
+                    "youtube": {
+                        "type": "text",
+                        "default_value": "",
+                        "label": "Youtube Adresi"
+                    }
+                }
+            }
+        ]
+    }
+}

@@ -1,0 +1,86 @@
+{% extends 'html/layouts/content-fluid.twig' %}
+{% block content %}
+	<div id="entry-slider">
+		{% for i in 1..10 %}
+			{% set entrySliderImage = theme.settings["entry_slider_image_" ~ i] %}
+			{% set entrySliderBigImage = theme.settings["entry_slider_big_image_" ~ i] %}
+			{% set entrySliderBackgroundColor = theme.settings["entry_slider_background_color_" ~ i] %}
+			{% set entrySliderLink = theme.settings["entry_slider_link_" ~ i] %}
+			{% if entrySliderImage %}
+				<div class="entry-slider entry-slider-{{i}}" data-thumb="{{ themeAsset(entrySliderImage) }}" style="{% if entrySliderBigImage %}background: url('{{ themeAsset(entrySliderBigImage) }}') no-repeat center top; background-size: cover;{% endif %}background-color: {{entrySliderBackgroundColor}};">
+					<div>
+						<a href="{{entrySliderLink}}">
+							<div class="entry-slider-img">
+								<img src="{{ themeAsset(entrySliderImage) }}" alt=""/>
+							</div>
+						</a>
+					</div>
+				</div>
+			{% endif %}
+		{% endfor %}
+	</div>
+	<div class="container">
+		<div class="entry-banner-title" data-selector="banner-title">
+			<div class="row">
+				{% for i in 1..4 %}
+					{% if not (macro_global('banner', i) | spaceless) is empty %}
+						<div class="col-6 col-lg-3">
+							<div class="banner">{{ macro_global('banner', i) }}</div>
+						</div>
+					{% endif %}
+				{% endfor %}
+			</div>
+		</div>
+		{% set productList = getProducts('featured', {'limit': 20}) %}
+		{% if productList | length > 0 %}
+			<div class="default-products featured-products">
+				<div class="products-header">
+					<span>Günün Fırsatları</span>
+				</div>
+				<div class="products-content row">
+					<div class="product-item">
+						<a href="{{ path('product_list_featured') }}">
+							<img src="{{ themeAsset('images/bg-featured.png') }}" alt="">
+						</a>
+					</div>
+					{% for item in productList %}
+						<div class="product-item">
+							{% include 'html/snippets/showcase-item.twig' %}
+						</div>
+					{% endfor %}
+				</div>
+			</div>
+		{% endif %}
+		<div class="entry-banner entry-banner-group-2">
+			<div class="row" data-selector="banner-count-down">
+				{% for i in 5..10 %}
+					{% if not (macro_global('banner', i) | spaceless) is empty %}
+						<div class="col-sm-6 col-lg-4">
+							<div class="banner">{{ macro_global('banner', i) }}</div>
+						</div>
+					{% endif %}
+				{% endfor %}
+			</div>
+		</div>
+		{% set productList = getProducts('popular', {'limit': 20}) %}
+		{% if productList | length > 0 %}
+			<div class="default-products popular-products">
+				<div class="products-header">
+					<span>Sizin için Seçtiklerimiz</span>
+				</div>
+				<div class="products-content row">
+					<div class="product-item">
+						<a href="{{ path('product_list_popular') }}">
+							<img src="{{ themeAsset('images/bg-popular.png') }}" alt="">
+						</a>
+					</div>
+					{% for item in productList %}
+						<div class="product-item">
+							{% include 'html/snippets/showcase-item.twig' %}
+						</div>
+					{% endfor %}
+				</div>
+			</div>
+		{% endif %}
+	</div>
+{% endblock %}

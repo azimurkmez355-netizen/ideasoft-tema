@@ -1,0 +1,55 @@
+<div class="showcase">
+	<div class="showcase-image-container">
+		<a class="showcase-label-container" href="{{ item.product.url }}" aria-label="Product Detail">
+			{% if item.product.isNew %}
+				<div class="new-label">Yeni</div>
+			{% endif %}
+			{% if item.product.isDiscounted and preferences.sales_allowed %}
+				<div class="discount-label">%{{ item.product.discountPercent }}</div>
+			{% endif %}
+		</a>
+		{% if item.product.realAmount == 0 %}
+			<a href="{{ item.product.url }}" class="sold-out-label"><span>TÜKENDİ</span></a>
+		{% endif %}
+		<div class="showcase-image">
+			<div class="showcase-image-item">
+				<a href="{{ item.product.url }}" title="{{ item.product.fullName }}">
+					{% if theme.settings.use_lazy_load %}
+						<img class="lazyload" src="{{ themeAsset('images/loader.gif') }}" data-src="{{ item.product.primaryImage.thumbUrl | default(getNopicImageUrl()) }}" alt="{{ item.product.fullName }}">
+					{% else %}
+						<img src="{{ item.product.primaryImage.thumbUrl | default(getNopicImageUrl()) }}" alt="{{ item.product.fullName }}">
+					{% endif %}
+				</a>
+			</div>
+			<div class="showcase-thumbs-image">{% for i in 1..4 %}{% if item.product.image(i) %}<a href="{{ item.product.url }}" data-thumb="{{ item.product.image(i).thumbUrl }}"></a>{% endif %}{% endfor %}</div>
+			<div class="showcase-image-dots">{% for i in 1..4 %}{% if item.product.image(i) %}<button></button>{% endif %}{% endfor %}</div>
+		</div>
+		<div class="showcase-favorites">
+			<a href="javascript:void(0);" class="add-my-favorites{{ isFavoriteProduct(item.product.id) ? ' favorite-product' }}" data-selector="add-my-favorites" data-product-id="{{ item.product.id }}" aria-label="Add To Favorites">
+				<i class="{{ isFavoriteProduct(item.product.id) ? 'fas' : 'far'}} fa-heart"></i>
+			</a>
+		</div>
+		{% if item.product.marketPriceDetail == "1" %}
+			<div class="showcase-market-price">
+				<span>KARGO <br>BEDAVA</span>
+			</div>
+		{% endif %}
+	</div>
+	<div class="showcase-content">
+		<div class="showcase-title">
+			<a href="{{ item.product.url }}" title="{{ item.product.fullName }}">{{ item.product.fullName }}</a>
+		</div>
+		{% if preferences.sales_allowed %}
+			<div class="showcase-price{% if item.product.isDiscounted %} has-discount{% endif %}">
+				<div class="showcase-price-new">
+					{{ item.product.discountedPriceWithTax(preferences.default_currency) | money ~ ' ' ~ preferences.default_currency }}
+				</div>
+				{% if item.product.isDiscounted %}
+					<div class="showcase-price-old">
+						{{ item.product.priceWithTax(preferences.default_currency) | money ~ ' ' ~ preferences.default_currency }}
+					</div>
+				{% endif %}
+			</div>
+		{% endif %}
+	</div>
+</div>

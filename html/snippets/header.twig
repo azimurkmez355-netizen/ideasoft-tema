@@ -1,0 +1,173 @@
+{% if theme.settings.header_slogan %}
+	<div class="header-slogan">
+		<div class="container">
+			<div class="header-slogan-inside">
+				{{ theme.settings.header_slogan }}
+			</div>
+		</div>
+	</div>
+{% endif %}
+<div class="header-top d-none d-lg-block" id="header">
+	<div class="container">
+		<div class="row align-items-center">
+			<div class="col-lg-6">
+				<div class="header-info">
+					{% if theme.settings.phone %}
+						<div class="header-phone">
+							<a href="tel:{{ theme.settings.phone | replace({' ': ''}) }}">
+								<i>
+									<img src="{{ themeAsset('images/icon-phone.svg') }}" />
+								</i>
+								<span>Müşteri Destek {{ theme.settings.phone }}</span>
+							</a>
+						</div>
+					{% endif %}
+					{% if theme.settings.whatsapp %}
+						<div class="header-whatsapp">
+							<a href="https://wa.me/9{{ theme.settings.whatsapp | replace({' ': ''}) }}" target="_blank">
+								<i>
+									<img src="{{ themeAsset('images/icon-whatsapp.svg') }}" />
+								</i>
+								<span>Whatsapp İletişim {{ theme.settings.whatsapp }}</span>
+							</a>
+						</div>
+					{% endif %}
+				</div>
+			</div>
+			<div class="col-lg-6">
+				<div class="header-cargo">
+					<a href="{{ path('shipping_tracking') }}">
+						<img src="{{ themeAsset('images/icon-truck.svg') }}" alt="">
+						<span>Kargo Takip</span>
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="header-middle">
+	<div class="container">
+		<div class="row align-items-center">
+			<div class="col-6 col-lg-3 order-1">
+				<div class="logo">
+					<a href="{{ path('entry') }}" aria-label="Logo">
+						<img src="{{ themeAsset(theme.settings.logo) }}" alt="">
+					</a>
+				</div>
+			</div>
+			<div class="col-lg-6 order-2">
+				<div class="search">
+					<form action="{{ path('search') }}" data-selector="search-form">
+						<input type="text" name="q" placeholder="Ürün adı, marka veya kategori ara..." aria-label="Search" {% if theme.settings.use_search_auto_complete %}class="auto-complete"{% endif %}>
+						<button>
+							<img src="{{ themeAsset('images/icon-search.svg') }}" alt="">
+						</button>
+					</form>
+				</div>
+			</div>
+			<div class="col-6 col-lg-3 order-1 order-lg-3">
+				<div class="header-middle-right">
+					<div class="user-menu">
+						{% if not visitor.isMember %}
+							<a href="javascript:void(0);" class="openbox" aria-label="Member Login" data-target="user-menu-content" data-mode="custom" data-overlay="true">
+								<img src="{{ themeAsset('images/icon-user.svg') }}" alt="">
+								<span>Giriş Yap</span>
+							</a>
+						{% else %}
+							<a href="javascript:void(0);" class="openbox" aria-label="Member Profile" data-target="user-menu-welcome" data-mode="custom" data-overlay="true">
+								<img src="{{ themeAsset('images/icon-user.svg') }}" alt="">
+								<span>Hesabım</span>
+							</a>
+						{% endif %}
+					</div>
+					<div class="header-favori">
+						<a href="{{ path('member_favourite_list') }}">
+							<img src="{{ themeAsset('images/icon-heart.svg') }}" alt="">
+							<span>Favorilerim</span>
+						</a>
+					</div>
+					<div class="cart-menu">
+						<a href="javascript:void(0);" aria-label="Cart" class="openbox" data-target="cart-content" data-mode="custom" data-overlay="true">
+							<img src="{{ themeAsset('images/icon-cart.svg') }}" alt="">
+							<span>Sepetim</span>
+							<div class="cart-amount" data-selector="cart-item-count"></div>
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="header-bottom d-none d-lg-block">
+	<div class="container">
+		{{ macro_global('navigationMenu') }}
+	</div>
+</div>
+
+<div class="cart-content openbox-content" data-selector="cart-content"></div>
+{% if not visitor.isMember %}
+	<div class="user-menu-content openbox-content">
+		<form action="{{ path("member_login") }}" method="POST" data-selector="login-panel">
+			<div class="user-menu-content-top">
+				<div class="user-menu-title">HOŞ GELDİNİZ</div>
+				<div class="user-menu-subtitle">Hızlı ve güvenli alışverişe giriş yapın!</div>
+				<div class="user-menu-input">
+					<input class="form-control" type="text" name="email" id="user-login-email" placeholder="E-mail adresiniz" value="{{ cookie_member_email }}" autocomplete="email">
+				</div>
+				<div class="user-menu-input">
+					<input class="form-control" type="password" name="pass" id="user-login-pass" placeholder="Şifreniz" autocomplete="current-password">
+				</div>
+				<div class="row mb-4">
+					<div class="col-6">
+						<div class="checkbox-custom user-menu-remember">
+							<input type="checkbox" name="remember" id="custom-remember-me" value="1" {{ (cookie_member_email ? 'checked': '') }}>
+							<label for="custom-remember-me">{{ getLang("_RememberMe_") }}</label>
+						</div>
+					</div>
+					<div class="col-6">
+						<a href="{{ path("member_forgotpass") }}" class="user-menu-forgot-pass">{{ getLang("_ForgotPass_") }}</a>
+					</div>
+				</div>
+				<div class="user-menu-button">
+					<button type="submit" class="btn btn-primary btn-block" data-selector="login-panel-button">Giriş Yap</button>
+				</div>
+			</div>
+			<div class="user-menu-content-bottom">
+				<div class="user-menu-title">HENÜZ ÜYE DEĞİL MİSİNİZ?</div>
+				<div class="user-menu-subtitle">Kolayca üye olabilirsiniz.</div>
+				<div class="user-menu-button">
+					<a href="{{ path("member_signup") }}" class="btn btn-user-menu-signup btn-block">Hemen Üye Ol</a>
+				</div>
+				{% if theme.settings.use_facebook_login %}
+					<div class="user-menu-button">
+						<button type="button" data-selector="facebook-login" class="btn btn-facebook btn-block">Facebook ile Bağlan</button>
+					</div>
+				{% endif %}
+				{% if theme.settings.use_google_login %}
+					<div class="user-menu-button">
+						<button type="button" data-selector="google-login" class="btn btn-google btn-block">Google ile Bağlan</button>
+					</div>
+				{% endif %}
+			</div>
+		</form>
+	</div>
+{% else %}
+	<div class="user-menu-welcome openbox-content">
+		<div class="user-menu-profile">
+			<div class="user-menu-title">HOŞ GELDİNİZ</div>
+			<div class="user-menu-subtitle">Sn. {{ visitor.member.firstname ~ ' ' ~ visitor.member.surname }}</div>
+			<div class="user-menu-profile-list">
+				<a href="{{ path('member_index') }}">Hesabına Git</a>
+				<a href="{{ path('member_payment_list') }}">Ödemelerim</a>
+				<a href="{{ path('member_order_list') }}">Siparişlerini Gör</a>
+				<a href="{{ path('member_bank_transfer') }}">Havale Bildirimi Yap</a>
+				<a href="{{ path('member_profile') }}">Bilgilerini Güncelle</a>
+				<a href="{{ path('member_point_list') }}">Puan ve Hediye Çeklerine Bak</a>
+				<a href="{{ path('member_favourite_list') }}">Favori Ürünlerine Gözat</a>
+			</div>
+			<div class="user-menu-profile-logout">
+				<a href="{{ path('member_logout') }}" class="btn btn-block btn-secondary">Çıkış Yap</a>
+			</div>
+		</div>
+	</div>
+{% endif %}
